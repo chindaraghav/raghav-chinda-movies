@@ -7,11 +7,11 @@ import {
     useWindowDimensions,
     View,
 } from 'react-native';
-import Animated, {useCode, clockRunning} from 'react-native-reanimated';
+import Animated, { useCode, clockRunning } from 'react-native-reanimated';
 
 import Poster from '@components/Poster';
 import SwipeToClose from '@components/SwipeToClose';
-import {createValue, spring, springBack} from '@utils/spring';
+import { createValue, spring, springBack } from '@utils/spring';
 
 import type MovieType from '@app/types/Movie';
 import type PositionType from '@app/types/Position';
@@ -60,7 +60,7 @@ function titleCase(value: string): string {
     return title;
 }
 
-const Modal = ({movie, position, close}: ModalProps) => {
+const Modal = ({ movie, position, close }: ModalProps) => {
     const dimensions = useWindowDimensions();
     const width = createValue(dimensions.width);
     const height = createValue(dimensions.height);
@@ -118,7 +118,7 @@ const Modal = ({movie, position, close}: ModalProps) => {
     );
 
     return (
-        <SwipeToClose y={translationY} opacity={opacity.value} {...{scale}}>
+        <SwipeToClose y={translationY} opacity={opacity.value} {...{ scale }}>
             <Animated.View
                 style={{
                     backgroundColor: 'white',
@@ -134,7 +134,7 @@ const Modal = ({movie, position, close}: ModalProps) => {
                 <View style={styles.content}>
                     <ScrollView>
                         <Text style={styles.paragraph}>
-                            <Text style={{fontWeight: 'bold'}}>
+                            <Text style={{ fontWeight: 'bold' }}>
                                 {`${titleCase(movie.name)} `}
                             </Text>
                             <Text style={styles.paragraph}>
@@ -144,7 +144,7 @@ const Modal = ({movie, position, close}: ModalProps) => {
                     </ScrollView>
                 </View>
             </Animated.View>
-            <Animated.View style={{...p, height: position.height}}>
+            <Animated.View style={{ ...p, height: position.height }}>
                 <Poster movie={movie} borderRadius={borderRadius.value} />
             </Animated.View>
         </SwipeToClose>
