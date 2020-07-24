@@ -10,10 +10,10 @@ const PATH = '/movies';
 const PATH_WITH_DATE = PATH + `/${CONSTANT_DATE}`;
 
 // When user has not synced
-const initialMoviesData = generateMoviesAndReviews(300, 4, 4);
+const initialMoviesData = generateMoviesAndReviews(1000, 4, 4);
 
 // When user has already synced then resolved with new data
-const newMovieData = generateMoviesAndReviews(1, 4, 4);
+const newMovieData = generateMoviesAndReviews(10, 4, 4);
 
 
 export const mockMoviesAPI = (unmock) => {

@@ -1,12 +1,13 @@
 const MovieSchema = {
     name: "Movie",
     properties: {
-        id: "string",
+        id: { type: "string", indexed: true },
+        created_on: { type: "int", indexed: true },
         name: "string",
         poster: "string",
         gender: "string",
         description: "string",
-        cast: "Artist[]",
+        cast: "string",
     }
 }
 

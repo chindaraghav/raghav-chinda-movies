@@ -1,22 +1,28 @@
 import { useCallback, useState, useEffect, useRef } from 'react'
-import { SyncService, LastSyncUtil } from '@utils/services';
+import { SyncService, LastSyncUtil, MoviePersistService } from '@utils/services';
 import { getErrorMessage } from '@utils/error.helper';
 
 function useAppSync(data) {
     const [isSyncing, setIsSyncing] = useState(false);
     const [error, setError] = useState(null);
+    const [syncSuccess, setSyncSuccess] = useState(null);
+    const [totalMovies, setTotalMovies] = useState(null);
 
     const syncUtil = useRef(new LastSyncUtil()).current;
 
     const sync = useCallback(async () => {
         try {
             setIsSyncing(true);
-            await SyncService.startSync(data);
+            setSyncSuccess(null);
+            const { totalMovies } = await SyncService.startSync(data);
             await syncUtil.save(Date.now());
+            setSyncSuccess(true);
+            setTotalMovies(totalMovies);
         }
         catch (error) {
             console.log("ERROR", error);
-            setError(error);
+            setError(getErrorMessage(error));
+            setSyncSuccess(false);
         }
         finally {
             setIsSyncing(false);
@@ -24,12 +30,20 @@ function useAppSync(data) {
     });
 
     useEffect(() => {
+        const setCount = async () => {
+            const count = await MoviePersistService.count();
+            setTotalMovies(count);
+        }
+        setCount();
+    }, []);
+
+    useEffect(() => {
         if (data) {
             sync(data);
         }
     }, [data]);
 
-    return { sync, isSyncing, error };
+    return { isSyncing, error, syncSuccess, totalMovies };
 
 }
 

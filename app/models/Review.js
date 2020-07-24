@@ -2,7 +2,8 @@ const ReviewSchema = {
     name: 'Review',
     properties: {
         id: "string",
-        movie_id: "string",
+        created_on: { type: "int", indexed: true },
+        movie_id: { type: "string", indexed: true },
         body: "string"
     }
 }

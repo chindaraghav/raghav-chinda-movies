@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-    ScrollView,
     StyleSheet,
     Text,
     useWindowDimensions,
@@ -51,6 +50,9 @@ function titleCase(value: string): string {
         if (shouldUpcase) {
             title += value[i].toUpperCase();
             shouldUpcase = false;
+        }
+        else {
+            title += value[i].toLowerCase();
         }
         if (value[i] === ' ') {
             shouldUpcase = true;
@@ -132,16 +134,23 @@ const Modal = ({ movie, position, close }: ModalProps) => {
                     ...p,
                 }}>
                 <View style={styles.content}>
-                    <ScrollView>
-                        <Text style={styles.paragraph}>
-                            <Text style={{ fontWeight: 'bold' }}>
-                                {`${titleCase(movie.name)} `}
-                            </Text>
-                            <Text style={styles.paragraph}>
-                                {movie.description}
-                            </Text>
+                    <Text style={styles.paragraph}>
+                        <Text style={{ fontWeight: 'bold' }}>
+                            {`${titleCase(movie.name)} `}
                         </Text>
-                    </ScrollView>
+                        <Text style={styles.paragraph}>
+                            {movie.description}
+                        </Text>
+                    </Text>
+                    <Text style={styles.heading}>
+                        Cast
+                        </Text>
+                    <Text style={styles.paragraph}>
+                        {movie.cast}
+                    </Text>
+                    <Text style={styles.heading}>
+                        Reviews
+                        </Text>
                 </View>
             </Animated.View>
             <Animated.View style={{ ...p, height: position.height }}>
@@ -157,9 +166,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     paragraph: {
-        fontSize: 24,
+        fontSize: 18,
         marginBottom: 16,
     },
+    heading: {
+        fontSize: 18,
+        fontWeight: "bold",
+    }
 });
 
 export default Modal;

@@ -7,6 +7,7 @@ export default interface Movie {
     poster: string;
     gender: string;
     description: string;
-    cast?: Array<Artist>;
+    created_on: number;
+    cast?: string;
     reviews?: Array<Review>;
 }
