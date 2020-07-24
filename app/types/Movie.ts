@@ -10,4 +10,5 @@ export default interface Movie {
     created_on: number;
     cast?: string;
     reviews?: Array<Review>;
+    reviewCount?: number
 }

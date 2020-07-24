@@ -57,7 +57,7 @@ const Start = () => {
         new LastSyncUtil().get()
             .then(lastSynced => {
                 setIsInitialLoad(!lastSynced);
-                // makeRequest({ lastSynced });
+                makeRequest({ lastSynced });
             })
             .catch(error => Alert.alert(getErrorMessage(error)))
     }, []);
