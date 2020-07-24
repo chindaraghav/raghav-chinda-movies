@@ -1,0 +1,30 @@
+const Artists: Array<string> = [
+    "Kevin Spacey",
+    "Brad Pitt",
+    "Angelina Jolie",
+    "Leonardo DiCaprio",
+    "Tom Cruise",
+    "Sylvester Stallone",
+    "Kate Winslet",
+    "Christian Bale",
+    "Keanu Reeves",
+    "Nicolas Cage",
+    "Hugh Jackman",
+    "Will Smith",
+    "Vin Diesel",
+    "George Clooney",
+    "Scarlett Johansson",
+    "Robert Downey Jr.",
+    "Samuel L. Jackson",
+    "Chris Evans",
+    "Megan Fox",
+    "Cameron Diaz",
+    "Arnold Schwarzenegger",
+    "Russell Crowe",
+    "Robert De Niro",
+    "Johnny Depp",
+    "Bruce Willis",
+    "Edward Norton"
+];
+
+export default Artists;

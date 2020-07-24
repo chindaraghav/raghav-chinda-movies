@@ -9,8 +9,11 @@ import Poster from './Poster';
 import type MovieType from '@app/types/Movie';
 import type PositionType from '@app/types/Position';
 
-export const WIDTH = width - 32;
-export const HEIGHT = height / 2;
+const WIDTH = width - 32;
+const HEIGHT = height / 2;
+const MARGIN_VERTICAL = 4;
+
+export const TOTAL_HEIGHT = HEIGHT + MARGIN_VERTICAL * 2;
 
 interface MovieProps {
     activeMovieId: Animated.Value<number>;
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
         height: HEIGHT,
         alignSelf: 'center',
         borderRadius: 8,
-        marginVertical: 8,
+        marginVertical: MARGIN_VERTICAL,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,

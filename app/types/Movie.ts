@@ -1,4 +1,5 @@
 import type Review from './Review';
+import type Artist from './Artist';
 
 export default interface Movie {
     id?: string;
@@ -6,5 +7,6 @@ export default interface Movie {
     poster: string;
     gender: string;
     description: string;
+    cast?: Array<Artist>;
     reviews?: Array<Review>;
 }
